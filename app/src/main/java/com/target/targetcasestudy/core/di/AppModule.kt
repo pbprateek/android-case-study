@@ -1,5 +1,6 @@
 package com.target.targetcasestudy.core.di
 
+import com.target.targetcasestudy.core.AppConstants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,20 +13,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 interface AppModule {
-
-//    @Binds
-//    abstract fun branchLink(item: BranchLinkManagerImpl): BranchLinkManager
-
     companion object {
-
         @Singleton
         @Provides
         fun getAnalytics(): Retrofit {
             return Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
     }
-
 }
