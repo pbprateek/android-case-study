@@ -2,6 +2,7 @@ package com.target.targetcasestudy.ui.deal_listing
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.target.targetcasestudy.core.utils.safeLaunch
 import com.target.targetcasestudy.data.deals.repo.DealsRepository
 import com.target.targetcasestudy.ui.deal_listing.model.DealListUiState
 import com.target.targetcasestudy.ui.deal_listing.model.OneOffEvent
@@ -30,13 +31,22 @@ class DealListViewModel @Inject constructor(private val dealsRepository: DealsRe
                 loading = true
             )
         }
-        viewModelScope.launch {
+        viewModelScope.safeLaunch({
             val deals = dealsRepository.getAllDeals()
             _uiState.update {
                 it.copy(
-                    loading = true,
+                    loading = false,
                     deals = deals
                 )
+            }
+        }) { _, message ->
+            _uiState.update {
+                it.copy(
+                    loading = false
+                )
+            }
+            viewModelScope.launch {
+                _oneOffEvent.send(OneOffEvent.ShowError(message))
             }
         }
     }

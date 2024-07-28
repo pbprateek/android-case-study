@@ -1,12 +1,11 @@
 package com.target.targetcasestudy.core.di
 
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 
@@ -24,7 +23,7 @@ interface AppModule {
         fun getAnalytics(): Retrofit {
             return Retrofit.Builder()
                 .baseUrl("https://api.github.com/")
-                .addConverterFactory(MoshiConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
     }

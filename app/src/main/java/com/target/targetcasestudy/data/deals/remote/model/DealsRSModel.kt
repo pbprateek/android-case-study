@@ -1,52 +1,47 @@
 package com.target.targetcasestudy.data.deals.remote.model
 
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import com.google.gson.annotations.SerializedName
 
-@JsonClass(generateAdapter = true)
 data class DealsRSModel(
-    @Json(name = "products")
+    @SerializedName("products")
     val deals: List<Deal>
 ) {
-    @JsonClass(generateAdapter = true)
     data class Deal(
-        @Json(name = "aisle")
+        @SerializedName("aisle")
         val aisle: String,
-        @Json(name = "availability")
+        @SerializedName("availability")
         val availability: String,
-        @Json(name = "description")
+        @SerializedName("description")
         val description: String,
-        @Json(name = "fulfillment")
+        @SerializedName("fulfillment")
         val fulfillment: String,
-        @Json(name = "id")
+        @SerializedName("id")
         val id: Int,
-        @Json(name = "image_url")
+        @SerializedName("image_url")
         val imageUrl: String,
-        @Json(name = "regular_price")
+        @SerializedName("regular_price")
         val regularPrice: RegularPrice,
-        @Json(name = "sale_price")
+        @SerializedName("sale_price")
         val salePrice: SalePrice?,
-        @Json(name = "title")
+        @SerializedName("title")
         val title: String
     ) {
-        @JsonClass(generateAdapter = true)
         data class RegularPrice(
-            @Json(name = "amount_in_cents")
+            @SerializedName("amount_in_cents")
             val amountInCents: Int,
-            @Json(name = "currency_symbol")
+            @SerializedName("currency_symbol")
             val currencySymbol: String,
-            @Json(name = "display_string")
+            @SerializedName("display_string")
             val displayString: String
         )
 
-        @JsonClass(generateAdapter = true)
         data class SalePrice(
-            @Json(name = "amount_in_cents")
+            @SerializedName("amount_in_cents")
             val amountInCents: Int,
-            @Json(name = "currency_symbol")
+            @SerializedName("currency_symbol")
             val currencySymbol: String,
-            @Json(name = "display_string")
+            @SerializedName("display_string")
             val displayString: String
         )
     }

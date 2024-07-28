@@ -9,7 +9,7 @@ import retrofit2.Retrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface NetworkModule {
+class NetworkModule {
 
     @Provides
     fun getTestNetwork(retrofit: Retrofit): DealApi {

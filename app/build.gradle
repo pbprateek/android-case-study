@@ -4,8 +4,8 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.hilt)
+    id("org.jetbrains.kotlin.kapt")
 }
-
 
 
 android {
@@ -20,11 +20,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     buildTypes {
@@ -37,7 +37,6 @@ android {
 
     buildFeatures {
         compose true
-        buildConfig = true
     }
     composeCompiler {
         enableStrongSkippingMode = true
@@ -47,9 +46,15 @@ android {
     namespace 'com.target.targetcasestudy'
 }
 
+hilt {
+    enableAggregatingTask = true
+}
+
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "com.google.android.material:material:1.13.0-alpha04"
 
     implementation libs.androidx.core.ktx
     implementation(libs.androidx.material.icons.extended)
@@ -73,13 +78,12 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation libs.retrofit
-    implementation "com.squareup.retrofit2:converter-moshi:2.11.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.11.0"
     implementation libs.okhttp
 
 
     implementation libs.hilt.android
-    ksp "androidx.hilt:hilt-compiler:1.2.0"
-    ksp libs.hilt.compiler
+    kapt libs.hilt.compiler
 
     // Testing
     testImplementation 'junit:junit:4.13.2'
