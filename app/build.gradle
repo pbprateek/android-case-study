@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.hilt)
     id("org.jetbrains.kotlin.kapt")
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 
@@ -84,9 +85,13 @@ dependencies {
     implementation libs.converter.gson
     implementation libs.okhttp
 
+    //Searalization
+    implementation(libs.kotlinx.serialization.core)
+
 
     implementation libs.hilt.android
     kapt libs.hilt.compiler
+    implementation "androidx.hilt:hilt-navigation-compose:1.2.0"
 
     // Testing
     testImplementation 'junit:junit:4.13.2'

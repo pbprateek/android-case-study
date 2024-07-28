@@ -1,6 +1,7 @@
 package com.target.targetcasestudy.ui.deal_listing.ui
 
 import android.widget.Toast
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +16,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.target.targetcasestudy.core.utils.compose.BlockingLoader
@@ -24,10 +26,10 @@ import com.target.targetcasestudy.ui.deal_listing.model.OneOffEvent
 @Composable
 fun DealListScreen(
     modifier: Modifier = Modifier,
-    moveToDetailScreen: (dealId: String) -> Unit
+    moveToDetailScreen: (dealId: Int) -> Unit
 ) {
 
-    val viewModel: DealListViewModel = viewModel()
+    val viewModel: DealListViewModel = hiltViewModel()
 
     val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
 
@@ -58,7 +60,9 @@ fun DealListScreen(
             } else {
                 LazyColumn {
                     items(uiState.deals) {
-                        Text(text = it.title)
+                        Text(modifier = Modifier.clickable {
+                            moveToDetailScreen(it.id)
+                        },text = it.title)
                         Spacer(modifier = Modifier.height(16.dp))
                     }
 
