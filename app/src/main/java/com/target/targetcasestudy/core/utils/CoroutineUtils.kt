@@ -21,7 +21,7 @@ fun CoroutineScope.safeLaunch(
         if (isUnReachException(throwable)) {
             errorBody.invoke(
                 INTERNET_NOT_FOUND,
-                "Please check your internet connection and try again"
+                "No Internet"
             )
         } else {
             errorBody.invoke(UNKNOWN_ERROR, "Something Went wrong")

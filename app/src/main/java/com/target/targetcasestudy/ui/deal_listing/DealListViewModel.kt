@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,9 +24,13 @@ class DealListViewModel @Inject constructor(private val dealsRepository: DealsRe
     val uiState: StateFlow<DealListUiState> = _uiState.asStateFlow()
 
     private val _oneOffEvent = Channel<OneOffEvent>()
-    val oneOffEvent = _oneOffEvent.consumeAsFlow()
+    val oneOffEvent = _oneOffEvent.receiveAsFlow()
 
     init {
+        init()
+    }
+
+    private fun init() {
         _uiState.update {
             it.copy(
                 loading = true
@@ -49,5 +54,12 @@ class DealListViewModel @Inject constructor(private val dealsRepository: DealsRe
                 _oneOffEvent.send(OneOffEvent.ShowError(message))
             }
         }
+    }
+
+    fun retry() {
+        viewModelScope.launch {
+            _oneOffEvent.send(OneOffEvent.HideError)
+        }
+        init()
     }
 }
