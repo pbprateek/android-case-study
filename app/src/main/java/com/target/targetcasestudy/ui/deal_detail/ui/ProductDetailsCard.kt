@@ -29,7 +29,7 @@ fun ProductDetailCard(
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(
                     horizontal = 16.dp, vertical = 20.dp
                 )

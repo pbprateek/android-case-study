@@ -36,7 +36,7 @@ fun ProductHeaderCard(
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(
                     top = 16.dp,
                     bottom = 8.dp,
@@ -85,7 +85,7 @@ fun ProductHeaderCard(
 
 
             Text(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxWidth(),
                 text = priceString
             )
             Text(

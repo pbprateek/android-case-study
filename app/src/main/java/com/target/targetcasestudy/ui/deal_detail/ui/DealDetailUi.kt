@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.target.targetcasestudy.core.theme.AppTheme
+import com.target.targetcasestudy.data.deals.repo.model.DEFAULT_DEAL
 import com.target.targetcasestudy.data.deals.repo.model.DealRepoModel
 
 
@@ -65,24 +66,8 @@ fun DealDetailUi(
 @Composable
 private fun DealDetailUiPreview() {
     AppTheme {
-        val dealRepoModel = DealRepoModel(
-            aisle = "Snacks",
-            availability = "In Stock",
-            description = "Delicious potato chips with a hint of salt",
-            fulfillment = "Store Pickup",
-            id = 123,
-            imageUrl = "https://example.com/chips.jpg",
-            regularPrice = DealRepoModel.RegularPrice(
-                amountInCents = 199, currencySymbol = "$", displayString = "$1.99"
-            ),
-            salePrice = DealRepoModel.SalePrice(
-                amountInCents = 149, currencySymbol = "$", displayString = "$1.49"
-            ),
-            title = "Potato Chips"
-        )
-
         DealDetailUi(
-            deal = dealRepoModel
+            deal = DEFAULT_DEAL
         )
     }
 }
