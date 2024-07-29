@@ -3,6 +3,8 @@ package com.target.targetcasestudy.core.utils.compose
 import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -18,7 +20,7 @@ fun AsyncImage(
     modifier: Modifier = Modifier,
     imageUrl: String,
     contentDescription: String?,
-    placeholder:Painter? = painterResource(id = R.drawable.ic_launcher_background),
+    placeholder: Painter? = painterResource(id = R.drawable.ic_launcher_background),
     error: Painter? = painterResource(id = R.drawable.ic_launcher_background),
     contentScale: ContentScale = ContentScale.Fit
 ) {
@@ -28,7 +30,7 @@ fun AsyncImage(
         model = imageUrl,
         contentDescription = contentDescription,
         contentScale = contentScale,
-        placeholder = placeholder,
+        placeholder = ColorPainter(Color.LightGray),
         error = error
     )
 
