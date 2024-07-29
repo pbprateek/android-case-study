@@ -89,7 +89,7 @@ fun ProductHeaderCard(
                 text = priceString
             )
             Text(
-                text = deal.availability,
+                text = deal.fulfillment,
                 style = TextStyle(fontSize = 14.sp, lineHeight = 20.sp, fontWeight = FontWeight.Normal)
             )
             Spacer(modifier = Modifier.height(8.dp))

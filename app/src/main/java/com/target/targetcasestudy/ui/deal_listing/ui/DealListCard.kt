@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -26,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.target.targetcasestudy.R
 import com.target.targetcasestudy.core.utils.compose.AsyncImage
 import com.target.targetcasestudy.data.deals.repo.model.DealRepoModel
 
@@ -79,7 +81,7 @@ fun DealListCard(
                 text = priceString
             )
             Text(
-                text = deal.availability,
+                text = deal.fulfillment,
                 style = TextStyle(fontSize = 14.sp, lineHeight = 20.sp, fontWeight = FontWeight.Normal)
             )
 
@@ -91,6 +93,22 @@ fun DealListCard(
                 text = deal.title
             )
             Spacer(modifier = Modifier.height(8.dp))
+
+            val availabilityText = buildAnnotatedString {
+                val style = TextStyle(fontSize = 12.sp, lineHeight = 16.sp, fontWeight = FontWeight.Normal)
+                withStyle(style.toSpanStyle().copy(color = Color.Green)) {
+                    append(deal.availability)
+                }
+                if (deal.aisle.isNotEmpty())
+                    withStyle(style.toSpanStyle().copy(color = Color(0xFF666666))) {
+                        append(stringResource(R.string.in_aisle, deal.aisle))
+                    }
+            }
+
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = availabilityText
+            )
         }
 
     }

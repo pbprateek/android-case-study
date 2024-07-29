@@ -22,13 +22,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.zIndex
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.target.targetcasestudy.R
 import com.target.targetcasestudy.core.utils.compose.BlockingLoader
 import com.target.targetcasestudy.core.utils.compose.ObserveAsOneOffEvents
 import com.target.targetcasestudy.ui.deal_detail.model.OneOffEvent
@@ -44,18 +46,18 @@ fun DealDetailScreen(onBackPressed: () -> Unit) {
 
     val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
 
-
     val scope = rememberCoroutineScope()
-    val snackbarHostState = remember { SnackbarHostState() }
+    val snackBarHostState = remember { SnackbarHostState() }
+    val context = LocalContext.current
 
     ObserveAsOneOffEvents(viewModel.oneOffEvent) {
         when (it) {
             is OneOffEvent.ShowError -> {
                 scope.launch {
-                    val result = snackbarHostState
+                    val result = snackBarHostState
                         .showSnackbar(
                             message = it.message,
-                            actionLabel = "RETRY",
+                            actionLabel = context.getString(R.string.retry),
                             duration = SnackbarDuration.Indefinite
                         )
                     when (result) {
@@ -69,7 +71,7 @@ fun DealDetailScreen(onBackPressed: () -> Unit) {
             }
 
             OneOffEvent.HideError -> {
-                snackbarHostState.currentSnackbarData?.dismiss()
+                snackBarHostState.currentSnackbarData?.dismiss()
             }
         }
     }
@@ -77,10 +79,10 @@ fun DealDetailScreen(onBackPressed: () -> Unit) {
     Scaffold(
         topBar = {
             Surface(shadowElevation = 3.dp) {
-                TopAppBar(modifier = Modifier.zIndex(2f),
+                TopAppBar(modifier = Modifier,
                     title = {
                         Text(
-                            text = "Details",
+                            text = stringResource(R.string.details),
                             style = TextStyle(fontSize = 18.sp, lineHeight = 24.sp, fontWeight = FontWeight.Bold),
                             color = Color(0xFF333333)
                         )
@@ -99,7 +101,7 @@ fun DealDetailScreen(onBackPressed: () -> Unit) {
                 )
             }
         }, snackbarHost = {
-            SnackbarHost(hostState = snackbarHostState)
+            SnackbarHost(hostState = snackBarHostState)
         }) {
         Box(
             modifier = Modifier
