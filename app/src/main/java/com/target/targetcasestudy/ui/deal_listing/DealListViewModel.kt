@@ -2,7 +2,7 @@ package com.target.targetcasestudy.ui.deal_listing
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.target.targetcasestudy.core.utils.safeLaunch
+import com.target.targetcasestudy.utils.safeLaunch
 import com.target.targetcasestudy.data.deals.repo.DealsRepository
 import com.target.targetcasestudy.ui.deal_listing.model.DealListUiState
 import com.target.targetcasestudy.ui.deal_listing.model.OneOffEvent

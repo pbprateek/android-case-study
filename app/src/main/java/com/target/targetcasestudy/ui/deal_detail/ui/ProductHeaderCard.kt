@@ -16,8 +16,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.target.targetcasestudy.core.utils.compose.AsyncImage
-import com.target.targetcasestudy.core.utils.compose.PriceText
+import com.target.targetcasestudy.utils.compose.AsyncImage
+import com.target.targetcasestudy.utils.compose.PriceText
 import com.target.targetcasestudy.data.deals.repo.model.DealRepoModel
 
 

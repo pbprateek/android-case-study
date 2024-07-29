@@ -1,4 +1,4 @@
-package com.target.targetcasestudy.core.utils
+package com.target.targetcasestudy.utils
 
 import android.content.Context
 import android.widget.Toast

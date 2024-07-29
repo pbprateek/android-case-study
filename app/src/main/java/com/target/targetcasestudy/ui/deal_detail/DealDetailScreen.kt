@@ -31,8 +31,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.target.targetcasestudy.R
-import com.target.targetcasestudy.core.utils.compose.BlockingLoader
-import com.target.targetcasestudy.core.utils.compose.ObserveAsOneOffEvents
+import com.target.targetcasestudy.utils.compose.BlockingLoader
+import com.target.targetcasestudy.utils.compose.ObserveAsOneOffEvents
 import com.target.targetcasestudy.ui.deal_detail.model.OneOffEvent
 import com.target.targetcasestudy.ui.deal_detail.ui.DealDetailUi
 import kotlinx.coroutines.launch

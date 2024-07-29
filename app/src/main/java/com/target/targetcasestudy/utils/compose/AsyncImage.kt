@@ -1,4 +1,4 @@
-package com.target.targetcasestudy.core.utils.compose
+package com.target.targetcasestudy.utils.compose
 
 import android.content.Context
 import androidx.compose.runtime.Composable

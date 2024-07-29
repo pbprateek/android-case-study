@@ -1,4 +1,4 @@
-package com.target.targetcasestudy.core.utils.compose
+package com.target.targetcasestudy.utils.compose
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

@@ -1,4 +1,4 @@
-package com.target.targetcasestudy.core.utils
+package com.target.targetcasestudy.utils
 
 import android.util.Log
 import kotlinx.coroutines.CoroutineExceptionHandler

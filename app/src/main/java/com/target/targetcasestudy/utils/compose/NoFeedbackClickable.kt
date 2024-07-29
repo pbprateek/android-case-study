@@ -1,4 +1,4 @@
-package com.target.targetcasestudy.core.utils.compose
+package com.target.targetcasestudy.utils.compose
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

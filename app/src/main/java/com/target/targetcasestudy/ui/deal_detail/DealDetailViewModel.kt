@@ -3,7 +3,7 @@ package com.target.targetcasestudy.ui.deal_detail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.target.targetcasestudy.core.utils.safeLaunch
+import com.target.targetcasestudy.utils.safeLaunch
 import com.target.targetcasestudy.data.deals.repo.DealsRepository
 import com.target.targetcasestudy.ui.deal_detail.model.DealDetailUIState
 import com.target.targetcasestudy.ui.deal_detail.model.OneOffEvent
