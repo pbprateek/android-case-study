@@ -20,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -29,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.target.targetcasestudy.R
 import com.target.targetcasestudy.core.utils.compose.AsyncImage
+import com.target.targetcasestudy.core.utils.compose.PriceText
 import com.target.targetcasestudy.data.deals.repo.model.DealRepoModel
 
 
@@ -58,28 +58,9 @@ fun DealListCard(
 
         Spacer(modifier = Modifier.width(16.dp))
 
-        val priceString = buildAnnotatedString {
-            val regularPriceStyle: SpanStyle = TextStyle(fontSize = 12.sp, lineHeight = 21.sp, fontWeight = FontWeight.Normal).toSpanStyle().copy(color = Color(0xFF333333))
-            if (!deal.salePrice?.displayString.isNullOrEmpty()) {
-                withStyle(TextStyle(fontSize = 21.sp, lineHeight = 25.sp, fontWeight = FontWeight.Bold).toSpanStyle().copy(color = MaterialTheme.colorScheme.primary)) {
-                    append(deal.salePrice?.displayString)
-                }
-                withStyle(regularPriceStyle) {
-                    append(" reg. ")
-                }
-            }
-            withStyle(regularPriceStyle) {
-                append(deal.regularPrice.displayString)
-            }
-        }
-
         Column(modifier = Modifier.fillMaxWidth()) {
 
-
-            Text(
-                modifier = Modifier.fillMaxWidth(),
-                text = priceString
-            )
+            PriceText(modifier = Modifier.fillMaxWidth(), deal = deal)
             Text(
                 text = deal.fulfillment,
                 style = TextStyle(fontSize = 14.sp, lineHeight = 20.sp, fontWeight = FontWeight.Normal)
@@ -96,7 +77,7 @@ fun DealListCard(
 
             val availabilityText = buildAnnotatedString {
                 val style = TextStyle(fontSize = 12.sp, lineHeight = 16.sp, fontWeight = FontWeight.Normal)
-                withStyle(style.toSpanStyle().copy(color = Color.Green)) {
+                withStyle(style.toSpanStyle().copy(color = Color(0xFF228B22))) {
                     append(deal.availability)
                 }
                 if (deal.aisle.isNotEmpty())
