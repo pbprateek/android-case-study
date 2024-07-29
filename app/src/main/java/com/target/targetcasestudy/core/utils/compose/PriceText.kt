@@ -14,17 +14,25 @@ import com.target.targetcasestudy.data.deals.repo.model.DealRepoModel
 
 @Composable
 fun PriceText(modifier: Modifier = Modifier, deal: DealRepoModel) {
-    val regularPriceStyle = if (deal.salePrice?.displayString.isNullOrEmpty()) {
-        TextStyle(fontSize = 21.sp, lineHeight = 25.sp, fontWeight = FontWeight.Bold).toSpanStyle().copy(color = Color(0xFF333333))
-    } else {
-        TextStyle(fontSize = 12.sp, lineHeight = 21.sp, fontWeight = FontWeight.Normal).toSpanStyle().copy(color = Color(0xFF333333))
-    }
-    val salePriceStyle = TextStyle(fontSize = 21.sp, lineHeight = 25.sp, fontWeight = FontWeight.Bold).toSpanStyle().copy(color = MaterialTheme.colorScheme.primary)
+    val dealAvailable = !deal.salePrice?.displayString.isNullOrEmpty()
+    val regularPriceStyle = TextStyle(
+        fontSize = if (dealAvailable) 12.sp else 21.sp,
+        lineHeight = if (dealAvailable) 21.sp else 25.sp,
+        fontWeight = if (dealAvailable) FontWeight.Normal else FontWeight.Bold,
+        color = Color(0xFF333333)
+    ).toSpanStyle()
+
+    val salePriceStyle = TextStyle(
+        fontSize = 21.sp,
+        lineHeight = 25.sp,
+        fontWeight = FontWeight.Bold,
+        color = MaterialTheme.colorScheme.primary
+    ).toSpanStyle()
 
     val priceString = buildAnnotatedString {
-        if (!deal.salePrice?.displayString.isNullOrEmpty()) {
+        deal.salePrice?.displayString?.let {
             withStyle(salePriceStyle) {
-                append(deal.salePrice?.displayString)
+                append(it)
             }
             withStyle(regularPriceStyle) {
                 append(" reg. ")
