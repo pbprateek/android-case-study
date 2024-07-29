@@ -5,8 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.target.targetcasestudy.ui.deal_detail.ui.DealDetailScreen
-import com.target.targetcasestudy.ui.deal_listing.ui.DealListScreen
+import com.target.targetcasestudy.ui.deal_listing.DealListScreen
+import com.target.targetcasestudy.ui.deal_detail.DealDetailScreen
 
 @Composable
 fun MainNavigator() {

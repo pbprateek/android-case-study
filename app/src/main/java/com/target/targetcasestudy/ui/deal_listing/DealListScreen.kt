@@ -1,4 +1,4 @@
-package com.target.targetcasestudy.ui.deal_listing.ui
+package com.target.targetcasestudy.ui.deal_listing
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -18,13 +18,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.target.targetcasestudy.core.utils.compose.BlockingLoader
 import com.target.targetcasestudy.core.utils.compose.ObserveAsOneOffEvents
-import com.target.targetcasestudy.ui.deal_listing.DealListViewModel
 import com.target.targetcasestudy.ui.deal_listing.model.OneOffEvent
 import kotlinx.coroutines.launch
 

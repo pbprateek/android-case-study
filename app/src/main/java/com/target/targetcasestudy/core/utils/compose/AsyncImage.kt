@@ -8,7 +8,6 @@ import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import coil.ImageLoader
 import coil.compose.SubcomposeAsyncImage
 import coil.memory.MemoryCache
@@ -20,8 +19,8 @@ fun AsyncImage(
     modifier: Modifier = Modifier,
     imageUrl: String,
     contentDescription: String?,
-    placeholder: Painter? = painterResource(id = R.drawable.ic_launcher_background),
-    error: Painter? = painterResource(id = R.drawable.ic_launcher_background),
+    placeholder: Painter? = ColorPainter(Color.LightGray),
+    error: Painter? = ColorPainter(Color.LightGray),
     contentScale: ContentScale = ContentScale.Fit
 ) {
 
@@ -30,37 +29,8 @@ fun AsyncImage(
         model = imageUrl,
         contentDescription = contentDescription,
         contentScale = contentScale,
-        placeholder = ColorPainter(Color.LightGray),
+        placeholder = placeholder,
         error = error
     )
 
 }
-
-@Composable
-fun SubCompAsyncImage(
-    modifier: Modifier = Modifier,
-    imageUrl: String,
-    contentDescription: String?,
-    contentScale: ContentScale = ContentScale.Fit
-) {
-    SubcomposeAsyncImage(
-        modifier = modifier,
-        model = imageUrl,
-        imageLoader = getAsyncImageLoader(LocalContext.current),
-        contentDescription = contentDescription,
-        contentScale = contentScale,
-    )
-}
-
-fun getAsyncImageLoader(context: Context) =
-    ImageLoader.Builder(context)
-        .memoryCachePolicy(CachePolicy.ENABLED)
-        .placeholder(R.drawable.ic_launcher_background)
-        .error(R.drawable.ic_launcher_background)
-        .memoryCache {
-            MemoryCache.Builder(context)
-                .maxSizePercent(0.3)
-                .strongReferencesEnabled(true)
-                .build()
-        }.crossfade(true)
-        .build()
