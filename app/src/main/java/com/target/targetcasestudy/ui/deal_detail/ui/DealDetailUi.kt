@@ -43,7 +43,7 @@ fun DealDetailUi(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(16.dp)
-                    .background(Color.LightGray)
+                    .background(Color(0xFFEEEEEE))
             )
 
             ProductDetailCard(deal = deal)

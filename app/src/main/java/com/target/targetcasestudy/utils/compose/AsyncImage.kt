@@ -19,8 +19,8 @@ fun AsyncImage(
     modifier: Modifier = Modifier,
     imageUrl: String,
     contentDescription: String?,
-    placeholder: Painter? = ColorPainter(Color.LightGray),
-    error: Painter? = ColorPainter(Color.LightGray),
+    placeholder: Painter? = ColorPainter(Color(0xFFEEEEEE)),
+    error: Painter? = ColorPainter(Color(0xFFEEEEEE)),
     contentScale: ContentScale = ContentScale.Fit
 ) {
 
