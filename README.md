@@ -13,7 +13,7 @@ The goal of the app is to display a list of deals currently offered by Target, a
 * **Gson**
 * **Retrofit**
 
-### Testing (Viewmodel with 100% coverage)
+### Testing (viewmodels with 100% coverage)
 * **Mockito**
 * **JUnit**
 * **Coroutines-Test** (For Coroutine helpers for testing)
