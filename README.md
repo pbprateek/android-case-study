@@ -3,6 +3,23 @@
 The goal of the app is to display a list of deals currently offered by Target, and to provide information on those
  deals.
 
+## More Details
+
+### Frameworks Used
+* **Jetpack Compose**
+* **Coroutines**
+* **Hilt**
+* **Koin**
+* **Gson**
+* **Retrofit**
+
+### Testing (Viewmodel with 100% coverage)
+* **Mockito**
+* **JUnit**
+* **Coroutines-Test** (For Coroutine helpers for testing)
+
+
+
 ## Screenshots
 
 <div style="display: flex; justify-content: space-between;">
