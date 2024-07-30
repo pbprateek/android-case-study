@@ -26,7 +26,8 @@ fun CoroutineScope.safeLaunch(
         } else {
             errorBody.invoke(UNKNOWN_ERROR, "Something Went wrong")
         }
-        Log.d("SAFE_LAUNCH", throwable.stackTraceToString())
+
+        //Log.d("SAFE_LAUNCH", throwable.stackTraceToString())
     }
     return this.launch(coroutineExceptionHandler) {
         launchBody.invoke()

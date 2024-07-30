@@ -70,10 +70,6 @@ fun DealListScreen(
                 }
             }
 
-            is OneOffEvent.MoveToDealDetail -> {
-                moveToDetailScreen.invoke(it.id)
-            }
-
             OneOffEvent.HideError -> {
                 snackBarHostState.currentSnackbarData?.dismiss()
             }

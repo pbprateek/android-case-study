@@ -2,16 +2,15 @@ package com.target.targetcasestudy.ui.deal_listing
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.target.targetcasestudy.utils.safeLaunch
 import com.target.targetcasestudy.data.deals.repo.DealsRepository
 import com.target.targetcasestudy.ui.deal_listing.model.DealListUiState
 import com.target.targetcasestudy.ui.deal_listing.model.OneOffEvent
+import com.target.targetcasestudy.utils.safeLaunch
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
